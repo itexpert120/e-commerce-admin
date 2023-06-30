@@ -1,5 +1,17 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useStoreModal } from "@/hooks/use-store-modal";
+import { useEffect } from "react";
 
 export default function SetupPage() {
-  return <div className="p-4">This is a protected route!</div>;
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    if (!isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
+
+  return null;
 }
