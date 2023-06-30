@@ -1,11 +1,5 @@
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
-  return (
-    <div className="p-4">
-      <Button size="default" variant="link">
-        Do Something
-      </Button>
-    </div>
-  );
+export default function SetupPage() {
+  return <div className="p-4">This is a protected route!</div>;
 }
