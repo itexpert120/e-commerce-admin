@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={inter.className + "font-sans antialiased"}>
           <ToasterProvider />
           <ModalProvider />
           {children}
