@@ -29,10 +29,12 @@ import {
 
 import { useStoreModal } from "@/hooks/use-store-modal";
 
+// Get Interface from shadcn-ui
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
 >;
 
+// create my own interface
 interface StoreSwitcherProps extends PopoverTriggerProps {
   items: Store[];
 }
@@ -41,21 +43,26 @@ export default function StoreSwitcher({
   className,
   items = [],
 }: StoreSwitcherProps) {
+  // modal, params and router for the switcher
   const storeModal = useStoreModal();
   const params = useParams();
   const router = useRouter();
 
+  // format the store items
   const formattedItems = items.map((item) => ({
     label: item.name,
     value: item.id,
   }));
 
+  // find the current store
   const currentStore = formattedItems.find(
     (item) => item.value === params.storeId
   );
 
+  // state for opening and closing switcher
   const [open, setOpen] = useState(false);
 
+  // function to redirect to new store
   const onStoreSelect = (store: { value: string; label: string }) => {
     setOpen(true);
     router.push(`/${store.value}`);
@@ -63,6 +70,7 @@ export default function StoreSwitcher({
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
+      {/* Button to Open Switcher */}
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -80,9 +88,11 @@ export default function StoreSwitcher({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
+            {/* Search Field */}
             <CommandInput placeholder="Search store.." />
             <CommandEmpty>No store found.</CommandEmpty>
             <CommandGroup heading="Stores">
+              {/* Stores List */}
               {formattedItems.map((store) => (
                 <CommandItem
                   key={store.value}
@@ -106,6 +116,7 @@ export default function StoreSwitcher({
           <CommandSeparator />
           <CommandList>
             <CommandGroup>
+              {/* Add New Store */}
               <CommandItem
                 onSelect={() => {
                   setOpen(false);
