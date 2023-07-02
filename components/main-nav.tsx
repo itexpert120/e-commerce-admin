@@ -34,6 +34,10 @@ export default function MainNav({
       label: "Colors",
     },
     {
+      href: `/${params.storeId}/products`,
+      label: "Products",
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Settings",
     },

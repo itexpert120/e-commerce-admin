@@ -150,11 +150,17 @@ export function ColorForm({ initialData }: ColorFormProps) {
                 <FormItem>
                   <FormLabel>Value</FormLabel>
                   <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Color value"
-                      {...field}
-                    />
+                    <div className="flex items-center gap-4">
+                      <Input
+                        disabled={loading}
+                        placeholder="Color value"
+                        {...field}
+                      />
+                      <div
+                        className="border p-4 rounded-full"
+                        style={{ backgroundColor: field.value }}
+                      ></div>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

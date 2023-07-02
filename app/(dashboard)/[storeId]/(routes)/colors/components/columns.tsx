@@ -18,7 +18,15 @@ export const columns: ColumnDef<ColorColumn>[] = [
   {
     accessorKey: "value",
     header: "Value",
-    cell: ({ row }) => row.original.value,
+    cell: ({ row }) => (
+      <div className="flex items-center gap-4">
+        {row.original.value}
+        <div
+          className="border p-4 rounded-full"
+          style={{ backgroundColor: row.original.value }}
+        ></div>
+      </div>
+    ),
   },
   {
     accessorKey: "createdAt",
@@ -26,6 +34,7 @@ export const columns: ColumnDef<ColorColumn>[] = [
   },
   {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];
