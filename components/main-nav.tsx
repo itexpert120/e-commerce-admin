@@ -16,27 +16,26 @@ export default function MainNav({
     {
       href: `/${params.storeId}`,
       label: "Overview",
-      active: pathname === `/${params.storeId}`,
     },
     {
       href: `/${params.storeId}/billboards`,
       label: "Billboards",
-      active: pathname === `/${params.storeId}/billboards`,
     },
     {
       href: `/${params.storeId}/categories`,
       label: "Categories",
-      active: pathname === `/${params.storeId}/categories`,
     },
     {
       href: `/${params.storeId}/sizes`,
       label: "Sizes",
-      active: pathname === `/${params.storeId}/sizes`,
+    },
+    {
+      href: `/${params.storeId}/colors`,
+      label: "Colors",
     },
     {
       href: `/${params.storeId}/settings`,
       label: "Settings",
-      active: pathname === `/${params.storeId}/settings`,
     },
   ];
 
@@ -48,7 +47,7 @@ export default function MainNav({
           href={route.href}
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            route.active
+            pathname === route.href
               ? "text-black dark:text-white"
               : "text-muted-foreground"
           )}
