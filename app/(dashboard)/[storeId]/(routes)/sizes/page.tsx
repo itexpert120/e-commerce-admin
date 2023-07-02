@@ -1,0 +1,30 @@
+import { format } from "date-fns";
+
+import { SizeClient } from "./components/client";
+import { SizeColumn } from "./components/columns";
+
+import prismadb from "@/lib/prismadb";
+
+export default async function SizesPage({
+  params,
+}: {
+  params: { storeId: string };
+}) {
+  const sizes = await prismadb.size.findMany({
+    where: {
+      storeId: params.storeId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  const formattedSizes: SizeColumn[] = sizes.map((item) => ({
+    id: item.id,
+    name: item.name,
+    value: item.value,
+    createdAt: format(item.createdAt, "MMMM do, yy"),
+  }));
+
+  return <SizeClient data={formattedSizes} />;
+}
