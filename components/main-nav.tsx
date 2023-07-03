@@ -38,6 +38,10 @@ export default function MainNav({
       label: "Products",
     },
     {
+      href: `/${params.storeId}/orders`,
+      label: "Orders",
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Settings",
     },
