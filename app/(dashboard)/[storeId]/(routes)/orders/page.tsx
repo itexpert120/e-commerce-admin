@@ -18,7 +18,7 @@ export default async function BillboardsPage({
     include: {
       orderItems: {
         include: {
-          prodct: true,
+          product: true,
         },
       },
     },
@@ -33,11 +33,11 @@ export default async function BillboardsPage({
     address: item.address,
     isPaid: item.isPaid,
     products: item.orderItems
-      .map((orderItem) => orderItem.prodct.name)
+      .map((orderItem) => orderItem.product.name)
       .join(", "),
     totalPrice: formatter.format(
       item.orderItems.reduce((total, item) => {
-        return total + Number(item.prodct.price);
+        return total + Number(item.product.price);
       }, 0)
     ),
     createdAt: format(item.createdAt, "MMMM do, yy"),
